@@ -1,0 +1,26 @@
+﻿@page
+@model LogoutModel
+@{
+    ViewData["Title"] = "Odjava";
+}
+
+
+
+<div class="row justify-content-center text-center align-self-center" style="margin-top:100px; ">
+    <div class="col-md-4 shadow-lg bg-white rounded" style="margin-top:5%; margin-bottom:5%; ">
+        <br />
+        <div>
+            <br />
+            <h1>@ViewData["Title"]</h1>
+            <br />
+            <hr />
+            <h4>Uspješno ste se odjavili!</h4>
+            <h5>Nadamo se da ste bili zadovoljni posjetom.</h5>
+            <br />
+            <a type="button" class="btn btn-primary btn-block btn-lg" href="/identity/account/login">Ponovna prijava</a>
+        </div>
+    </div>
+    <div class="col-md-5 ">
+        <img src="~/Slike/slikaa.jpg" class="img-fluid" />
+    </div>
+</div>

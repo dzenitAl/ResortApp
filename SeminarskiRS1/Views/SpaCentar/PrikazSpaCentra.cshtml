@@ -1,0 +1,76 @@
+﻿
+@using SeminarskiRS1.ViewModels;
+@model SpaCentarPrikazVM
+@{
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="padding-left:50px;">Spa centar</h2>
+                <ol style="padding-right:40px; font-size:14px">
+                    <li><a href="/Home/Index">Početna</a></li>
+                    <li>Spa centar</li>
+                </ol>
+            </div>
+        </div>
+    </section><!-- End Our Portfolio Section -->
+    <!-- ======= Service Details Section ======= -->
+    <section class="service-details">
+
+        <div class="portfolio">
+            <div class="row">
+                <div class="col-lg-12">
+                    @if (Model.RolaID == 1)
+                    {
+                        <div class="row col-md-12 text-center">
+                            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="window.location='/SpaCentar/EvidentirajSpaCentar?SpaCentarID=0'" style="margin-bottom:20px">Dodaj novi spa centar</button>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="row">
+                @foreach (var x in Model.centri)
+                {
+                    <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+                        <div class="card">
+                            <div class="card-img">
+                                <img src="~/Slike/@x.PutanjaDoSlike" alt="">
+                            </div>
+                            <div class="card-body">
+
+                                <h4 class="text-center"> @x.NazivSpaCentra </h4>
+                                <p class="card-text" style="font-size:medium">@x.OpisSpaCentra</p>
+                                <div class="read-more"><a href="/SpaCentar/EvidentirajSpaCentar?SpaCentarID=@x.SpaCentarId"><i class="bi bi-arrow-right"></i> Detalji</a></div><br />
+                                @if (Model.RolaID == 1)
+                                {
+                                    <div class="d-flex justify-content-around">
+                                        <button type="button" class="btn btn-danger btn-lg col-3" onclick="window.location = '/SpaCentar/ObrisiSpaCentar?SpaCentarID=@x.SpaCentarId'">Obriši</button>
+                                        <button type="button" class="btn btn-primary btn-lg col-3" onclick="window.location = '/SpaCentar/EvidentirajSpaCentar?SpaCentarID=@x.SpaCentarId'">Uredi</button>
+                                    </div>
+                                }
+                                @*else
+                                {
+                                    <br />
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-success btn-lg col-3" onclick="window.location = '/Wellnes/DodajURezervaciju?SpaCentarId=@x.SpaCentarId'">Rezerviši</button>
+                                    </div>
+                                }*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </section><!-- End Service Details Section -->
+ </main>

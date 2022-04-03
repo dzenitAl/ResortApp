@@ -1,0 +1,148 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+@using SeminarskiRS1.ViewModels
+@model BazenEvidentirajVM
+@{
+    var photoPath = "~/Slike/" + (@Model.PutanjaDoSlike ?? "add-image.png");
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+}
+
+<main id="main">
+
+    <!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="padding-left:25px;">Dodaj novi bazen</h2>
+                <ol style="padding-right:40px; font-size:14px">
+                    <li><a href="/Home/Index">Home</a></li>
+                    <li><a href="/Bazen/PrikazBazena">Bazeni</a></li>
+                    <li>Dodaj novi bazen</li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Our Portfolio Section -->
+
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+                @if (Model.RolaID == 1)
+                {
+                    <form enctype="multipart/form-data" asp-action="Snimi" asp-controller="Bazen">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                            <div class="portfolio-info">
+                                <h3>Bazen slike</h3>
+                                <input multiple type="file" asp-for="BazenSlika" class="form-control form-control-lg" id="formFileMultiple" style="font-size:17px;" />
+                                <br />
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        @if (Model.PutanjaDoSlike != null)
+                                        {
+                                            <div class="swiper-slide">
+                                                <img src="~/Slike/@Model.PutanjaDoSlike" asp-append-version="true" style="height:inherit" />
+                                                <span asp-validation-for="BazenSlika" class="text-danger"></span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="swiper-slide">
+                                                <span asp-validation-for="BazenSlika" class="text-danger"></span>
+                                                <img src="@photoPath" asp-append-version="true" asp-validation-for="BazenSlika" />
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="portfolio-info">
+                                <h3>Detalji o novom bazenu</h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group row">
+                                        <input asp-for="BazenId" value="@Model.BazenId" hidden />
+                                    </div>
+
+                                    <div class="form-group row input-group input-group-lg">
+                                        <h4>Naziv bazena</h4>
+                                        <input type="text" asp-for="NazivBazena" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                                    </div>
+
+                                    <div class="form-group row input-group input-group-lg">
+                                        <h4>Cijena iznajmljivanja bazena</h4>
+                                        <input type="text" asp-for="CijenaIznajmljivanjaBazena" class="form-control" aria-describedby="inputGroup-sizing-lg" required>
+                                    </div>
+
+                                    <div class="form-group row input-group input-group-lg">
+                                        <h4>Opis bazena</h4>
+                                        <textarea asp-for="OpisBazena" required class="form-control" aria-label-="With textarea" style="height:100px"></textarea>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Snimi" class="btn btn-primary btn-lg btn-block" />
+                            </div>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <form enctype="multipart/form-data" asp-controller="Bazen" class="row">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                            <div class="portfolio-info">
+                                <h3>Bazen slike</h3>
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        <div class="swiper-slide">
+                                            <img src="~/Slike/@Model.PutanjaDoSlike" asp-append-version="true" style="height:inherit" />
+                                            <span asp-validation-for="BazenSlika" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 align-self-center">
+                            <div class="portfolio-info">
+                                <h3>Informacije o bazenu </h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group">
+                                        <input asp-for="BazenId" value="@Model.BazenId" hidden />
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Naziv bazena</h4>
+                                        <input type="text" asp-for="NazivBazena" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" readonly style="font-size:17px;">
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Cijena bazena</h4>
+                                        <input type="text" asp-for="CijenaIznajmljivanjaBazena" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" readonly style="font-size:17px;">
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Opis bazena </h4>
+                                        <textarea asp-for="OpisBazena" readonly class="form-control form-control-lg" aria-label="With textarea" rows="10" style="height:auto; font-size:16px;"></textarea>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-success btn-lg col-3" onclick="window.location = '/Bazen/Rezervacija?BazenId=@Model.BazenId'">Napravi rezervaciju</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </section><!-- End Portfolio Details Section -->
+</main>

@@ -1,0 +1,163 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{ 
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+
+    var photoPath = "~/Slike/" + (@Model.PutanjaDoSlikeWellnes ?? "add-image.png");
+}
+@using SeminarskiRS1.ViewModels
+@model WellnesEvidentirajVM
+
+    <main id="main">
+
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 style="padding-left:50px;">Dodaj/uredi detalje o wellnes tretmanu</h2>
+                    <ol style="padding-right:40px; font-size:14px">
+                        <li><a href="/Home/Index">Home</a></li>
+                        <li><a href="/Wellnes/PrikazWellnes">Wellnes tretman</a></li>
+                        <li>Wellnes tretman</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="portfolio-details" class="portfolio-details">
+            <div class="container">
+
+                <div class="row justify-content-center align-self-center">
+                    @if (Model.RolaID == 1)
+                    {
+                        <form enctype="multipart/form-data" asp-action="Snimi" asp-controller="Wellnes" class="row">
+
+                            <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                                <div class="portfolio-info">
+                                    <h3>Wellnes slike</h3>
+                                    <input multiple type="file" asp-for="SlikaWellnes"  class="form-control form-control-lg" id="formFileMultiple" style="font-size:17px;"/>
+                                    <br />
+                                    <div class="portfolio-details-slider swiper">
+                                        <div class="swiper-wrapper align-items-center">
+                                            @if (Model.PutanjaDoSlikeWellnes != null)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="~/Slike/@Model.PutanjaDoSlikeWellnes" asp-append-version="true" style="height:inherit" />
+                                                    <span asp-validation-for="SlikaWellnes" class="text-danger"></span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="swiper-slide">
+                                                    <span asp-validation-for="SlikaWellnes" class="text-danger"></span>
+                                                    <img src="@photoPath" asp-append-version="true" asp-validation-for="SlikaWellnes" />
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 align-self-center">
+                                <div class="portfolio-info">
+                                    <h3>Informacije o Wellnes tretmanu</h3>
+                                    <div class="portfolio-info">
+
+                                        <div class="form-group">
+                                            <input asp-for="WellnesId" value="@Model.WellnesId" hidden />
+                                        </div>
+
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Naziv Wellnes tretmana</h4>
+                                            <input type="text" asp-for="NazivWellnes" class="form-control form-control-lg" required style="font-size:17px;">
+                                        </div>
+
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Tip Wellnes tretmana</h4>
+                                            <select asp-for="TipWellnes" class="form-select font-select-lg" required style="font-size:17px;">
+                                                <option value="Masaža">Masaža</option>
+                                                <option value="Tretman tijela">Tretman tijela</option>
+                                                <option value="Tretman lica">Tretman lica</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Opis Wellnes tretmana</h4>
+                                            <textarea asp-for="OpisPrograma" required class="form-control form-control-lg" rows="10" style="height:auto; font-size:16px;"></textarea>
+                                        </div>
+
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Cijena Wellnes tretmana</h4>
+                                            <input type="text" asp-for="CijenaTretmana" class="form-control form-control-lg" required style="font-size:17px;">
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Snimi" class="btn btn-primary btn-lg btn-block" />
+                                </div>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <form enctype="multipart/form-data" asp-controller="Wellnes" class="row">
+
+                            <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                                <div class="portfolio-info">
+                                    <h3>Wellnes slike</h3>
+                                    <div class="portfolio-details-slider swiper">
+                                        <div class="swiper-wrapper align-items-center">
+                                            <div class="swiper-slide">
+                                                <img src="~/Slike/@Model.PutanjaDoSlikeWellnes" asp-append-version="true" style="height:inherit" />
+                                                <span asp-validation-for="SlikaWellnes" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 align-self-center">
+                                <div class="portfolio-info">
+                                    <h3>Informacije o Wellnes tretmanu</h3>
+                                    <div class="portfolio-info">
+
+                                        <div class="form-group">
+                                            <input asp-for="WellnesId" value="@Model.WellnesId" hidden />
+                                        </div>
+
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Naziv Wellnes tretmana</h4>
+                                            <input type="text" asp-for="NazivWellnes" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                        </div>
+
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Tip Wellnes tretmana</h4>
+                                            <input type="text" asp-for="TipWellnes" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                        </div>
+
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Opis Wellnes tretmana</h4>
+                                            <textarea asp-for="OpisPrograma" readonly class="form-control form-control-lg" rows="10" style="height:auto; font-size:16px;"></textarea>
+                                        </div>
+                                        <div class="form-group input-group row input-group-lg">
+                                            <h4>Cijena Wellnes tretmana</h4>
+                                            <input type="text" asp-for="CijenaTretmana" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                        </div>
+                                        <br />
+                                        <br />
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success btn-lg col-3" onclick="window.location = '/Wellnes/Rezervacija?WellnesId=@Model.WellnesId'">Napravi rezervaciju</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </section>
+
+    </main>

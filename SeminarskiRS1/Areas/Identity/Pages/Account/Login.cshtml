@@ -1,0 +1,124 @@
+﻿@page
+@model LoginModel
+
+@{
+
+//ViewData["Title"] = "Log in";
+//Layout = null;
+}
+<style>
+    label {
+        font-size: medium;
+        padding-right: 30px;
+    }
+    input{
+        font-size:medium;
+    }
+    #account{
+        margin-left:20px;
+    }
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Portfolio - Moderna Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Moderna - v4.8.0
+    * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+        <div class="row justify-content-center " style="margin-top:150px;">
+            <div class="col-md-5 shadow" >
+                <form id="account" method="post">
+                    <br />
+                    <div class="form-group input-group row input-group-lg text-center">
+                        <h2>Prijavi se</h2>
+                    </div>
+                    <br />
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group input-group row input-group-lg ">
+                        <label asp-for="Input.Email">Email</label>
+                        <input asp-for="Input.Email" class="form-control fs-4" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group row input-group-lg">
+                        <label asp-for="Input.Password"> Lozinka</label>
+                        <input asp-for="Input.Password" class="form-control fs-4" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group row input-group-lg">
+                        <div class="checkbox">
+                            <label asp-for="Input.RememberMe">
+                                <input asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group input-group row input-group-lg">
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Prijavi se</button>
+                    </div>
+                    <div class="form-group input-group row input-group-lg text-center">
+                        <p>
+                            <a id="forgot-password" asp-page="./ForgotPassword">Zaboravili ste lozinku?</a>
+                        </p>
+                        <br />
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-4 shadow align-content-center" style="margin-top:5%; margin-bottom:5%; margin-right:5%; background-color:#1e4356; height:200px;">
+                <div class="text-center" style="color:white;">
+                    <br /><br /><br />
+                    <h3>Još uvijek nemate svoj profil?</h3>
+                    <br />
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-outline-light btn-lg col-4">Registrujte se</a>
+                    <br />
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>
+
+    
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

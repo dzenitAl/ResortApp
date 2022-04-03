@@ -1,0 +1,52 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{ Layout = "~/Views/Shared/_LayoutPrikaz.cshtml"; }
+@model SeminarskiRS1.ViewModels.RezervacijaPrikazVM
+
+<div class="wrapper wrapper-content animated fadeInRight" style="padding:100px 30px;">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <h3>Prikaz rezervacija</h3>
+                  
+                <div class="ibox-content">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Stavka</th>
+                                    <th>Naziv</th>
+                                    <th>Termin rezervacije</th>
+                                    <th>Cijena</th>
+                                    <th>Kolicina</th>
+                                    <th>Ukupna cijena</th>
+                                    <th>Status rezervacije</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.stavke)
+                                {
+                                <tr>
+                                    <td>@Model.Controller</td>
+                                    <td>@item.Naziv</td>
+                                    <td>@Model.dtmDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@item.Cijena</td>
+                                    <td>@Model.Kolicina</td>
+                                    <td>@Model.UkupnaCijena</td>
+                                    <td> status ?? </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            
+            
+            </div>
+        </div>
+    </div>
+</div>
+

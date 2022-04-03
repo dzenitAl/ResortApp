@@ -1,0 +1,137 @@
+﻿@page
+@model RegisterModel
+@{
+    //ViewData["Title"] = "Registracija";
+    //Layout = null;
+}
+
+<style>
+    label {
+        font-size: medium;
+        padding-left: 10px;
+    }
+
+    form{
+        margin-left:20px;
+        margin-right:20px;
+    }
+   
+</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Portfolio - Moderna Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Moderna - v4.8.0
+    * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+
+    <div class="row justify-content-center" style="margin-top:100px; ">
+        <div class="col-md-4 shadow-lg bg-white rounded" style="margin-top:5%; margin-bottom:5%; ">
+            <br />
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div class="text-center">
+                    <h2>Registracija</h2>
+                    <h4>Kreiraj račun</h4>
+                    <br />
+                </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Ime"></label>
+                    <input asp-for="Input.Ime" class="form-control fs-4" />
+                    <span asp-validation-for="Input.Ime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Input.Prezime"></label>
+                    <input asp-for="Input.Prezime" class="form-control fs-4" />
+                    <span asp-validation-for="Input.Prezime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Username"></label>
+                    <input asp-for="Input.Username" class="form-control fs-4" />
+                    <span asp-validation-for="Input.Username" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Email"></label>
+                    <input asp-for="Input.Email" class="form-control fs-4" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.Password">Lozinka</label>
+                    <input asp-for="Input.Password" type="password" id="pass" class="form-control fs-4" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <span style="padding-left: 10px; font-size: medium;"><input type="checkbox" onclick="myFunction()">Prikaži lozinku</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Input.ConfirmPassword">Potvrdi lozinku</label>
+                    <input asp-for="Input.ConfirmPassword" class="form-control fs-4" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">Potvrdi</button>
+                    <br />
+                </div>
+            </form>
+        </div>
+        <div class="col-md-5 " >
+            <img src="~/Slike/slikaa.jpg" class="img-fluid" />
+        </div>
+    </div>
+</body>
+</html>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("pass");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+
+    </script>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

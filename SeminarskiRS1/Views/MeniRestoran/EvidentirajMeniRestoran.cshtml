@@ -1,0 +1,190 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using SeminarskiRS1.ViewModels
+@model MeniRestoranEvidentirajVM
+@{
+    var photoPath = "~/Slike/" + (@Model.PutanjaDoSlike ?? "add-image.png");
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+}
+
+
+<main id="main">
+
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="padding-left:50px;">Dodaj novi meni</h2>
+                <ol style="padding-right:40px; font-size:14px">
+                    <li><a href="/Home/Index">Home</a></li>
+                    <li><a href="/MeniRestoran/PrikazMeniRestoran">Meni-Restoran</a></li>
+                    <li>Detalji menija</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row justify-content-center align-self-center">
+                @if (Model.RolaID == 1)
+                {
+                    <form enctype="multipart/form-data" asp-action="Snimi" asp-controller="MeniRestoran" class="row">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+
+                            <div class="portfolio-info">
+                                <h4>Dodaj/uredi slike restorana i menija</h4>
+                                <input multiple type="file" asp-for="MeniRestoranSlike" required class="form-control form-control-lg" id="formFileMultiple" style="font-size:17px;"/>
+
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+
+                                        @if (Model.PutanjaDoSlikaMeniRestorana != null)
+                                        {
+                                            @foreach (var x in Model.PutanjaDoSlikaMeniRestorana)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="~/Slike/@x" asp-append-version="true" style="height:inherit" />
+                                                    <span asp-validation-for="MeniRestoranSlike" class="text-danger"></span>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="swiper-slide">
+                                                <span asp-validation-for="MeniRestoranSlike" class="text-danger"></span>
+                                                <img src="@photoPath" asp-append-version="true" />
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 align-self-center">
+                            <div class="portfolio-info">
+                                <h3>Informacije o meniju</h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group row">
+                                        <input asp-for="MeniRestoranID" value="@Model.MeniRestoranID" hidden />
+                                    </div>
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Opis menija: </h4>
+                                        <textarea asp-for="OpisMenija" required class="form-control form-control-lg" rows="13" style="height:auto; font-size:16px;"></textarea>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Restoran: </h4>
+                                        <select asp-for="Restoran" class="form-select form-select-lg" style="font-size:17px;" required>
+                                            <option value="360 Restaurant">360 Restaurant</option>
+                                            <option value="Lobby Bar">Lobby bar</option>
+                                            <option value="Beach Restaurant">Beach restaurant</option>
+                                        </select>
+                                    </div>
+
+                                    @*<div class="form-group input-group row input-group-lg">
+                                        <div class="form-group input-group row input-group-lg justify-content-around">
+                                            <h4>Tip menija i cijena: </h4>
+                                            @foreach (var item in Model.MeniRestoranTip)
+                                            {
+                                                <div class="row col-4 align-content-around">
+                                                    <input type="text" asp-for="MeniRestoranTipID" value="@item.Text" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                                    <input type="text" asp-for="CijenaMenija" class="form-control form-control-lg" style="font-size:17px; text-align:center;" required>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>*@
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Tip menija: </h4>
+                                        <select asp-for="MeniRestoranTipID" asp-items="@Model.MeniRestoranTip" class="form-select form-select-lg" style="font-size:17px;" required></select>
+                                    
+                                    </div>
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Cijena menija: </h4>
+                                        <input type="text" asp-for="CijenaMenija" class="form-control form-control-lg" style="font-size:17px;">
+                                    </div>
+
+                                </div>
+                                <input type="submit" value="Snimi" class="btn btn-primary btn-block btn-lg" />
+                            </div>
+                        </div>
+
+                    </form>
+                }
+                else
+                {
+                    <form enctype="multipart/form-data" asp-controller="Wellnes" class="row">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                            <div class="portfolio-info">
+                                <h3>Wellnes slike</h3>
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        @if (Model.PutanjaDoSlikaMeniRestorana != null)
+                                        {
+                                            @foreach (var x in Model.PutanjaDoSlikaMeniRestorana)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="~/Slike/@x" asp-append-version="true" style="height:inherit" />
+                                                    <span asp-validation-for="MeniRestoranSlike" class="text-danger"></span>
+                                                </div>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 align-self-center">
+                            <div class="portfolio-info">
+                                <h3>Informacije o meniju</h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group">
+                                        <input asp-for="MeniRestoranID" value="@Model.MeniRestoranID" hidden />
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Opis menija: </h4>
+                                        <textarea asp-for="OpisMenija" readonly class="form-control form-control-lg" rows="14" style="height:auto; font-size:16px; "></textarea>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Restoran: </h4>
+                                        <input type="text" asp-for="Restoran" Value="@Model.Restoran" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Tip menija: </h4>
+                                        <input type="text" asp-for="MeniRestoranTipID" value="@Model.MeniRestoranTip2" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                    </div>
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Cijena menija: </h4>
+                                        <input type="text" asp-for="CijenaMenija" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                    </div>
+
+                                    <br />
+                                    <br />
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-success btn-lg col-3" onclick="window.location = '/MeniRestoran/Rezervacija?MeniRestoranID=@Model.MeniRestoranID'">Napravi rezervaciju</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </section>
+
+
+</main>
+

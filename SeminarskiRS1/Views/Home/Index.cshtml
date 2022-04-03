@@ -1,0 +1,345 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/assets/css/style.css" />
+
+    <link href="~/assets/css/animate.css" rel="stylesheet">
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="~/assets/js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <title>Moderna Bootstrap Template - Index</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Moderna - v4.8.0
+    * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <div class="logo">
+                <h1 class="text-light"><a href="/"><span style="padding-left:40px;">Resort</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                 @*<a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>*@
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="active " href="/">Početna</a></li>
+                    <li><a href="/Sala/PrikazSala">Sale</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Smještaj</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/Soba/PrikazSoba">Sobe</a></li>
+                            <li><a href="/Bungalov/PrikazBungalova">Bungalov</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/MeniRestoran/PrikazMeniRestoran">Restoran</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Aktivnosti</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/SportskaAktivnost/PrikazSportskaAktivnost">Sportske aktivnosti</a></li>
+                            <li><a href="/Bazen/PrikazBazena">Bazen</a></li>
+                            <li><a href="/SpaCentar/PrikazSpaCentra">Spa centar</a></li>
+                            <li><a href="/Wellnes/PrikazWellnes">Wellness</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/identity/account/logout"><i class="bi bi-person-circle" style="font-size:30px; margin-right:40px;"></i></a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex justify-cntent-center align-items-center">
+        <div id="heroCarousel" class="container-fluid carousel carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Dobrodošli u <span>Resort</span></h2>
+                    <p class="animate__animated animate__fadeInUp">
+                        Resort Moderna je odmaralište sa predivnom lokacijom, obuhvata 330 soba i apartmana, različitih bungalova, višenamjenski kongresni centar sa savremenom konferencijskom tehnologijom,
+                        Wellness, Spa & Fitness Zdravstveni centar, zatvoreni i otvoreni bazeni, i još mnogo drugih aktivnosti.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Sale</h2>
+                    <p class="animate__animated animate__fadeInUp">
+                        Iskusite nezaboravne trenutke i organizirajte svoje evente u našim elegantnim salama, idealnim za poslovne sastanke i prijeme, konferencije, team building-e, edukacije ili privatne proslave i svadbe.
+                    </p>
+                    <a href="/Sala/PrikazSala" class="btn-get-started animate__animated animate__fadeInUp">Pogledaj ponudu</a>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Wellnes</h2>
+                    <p class="animate__animated animate__fadeInUp">
+                        Razmazite vaša čula u našoj ekskluzivnoj Wellness oazi – prepustite se potpunoj regeneraciji od stresne svakidašnjice i dovedite um, tijelo i duh u apsolutnu harmoniju.
+                    </p>
+                    <a href="/Wellnes/PrikazWellnes" class="btn-get-started animate__animated animate__fadeInUp">Pogledaj ponudu</a>
+                </div>
+            </div>
+
+            <!-- Slide 4 -->
+            <div class="carousel-item">
+                <div class="carousel-container">
+                    <h2 class="animate__animated animate__fadeInDown">Spa centar</h2>
+                    <p class="animate__animated animate__fadeInUp">
+                        Imate priliku uživati u Turskom Hamamu, Rimskoj kupki i tako putoviti kroz vrijeme.
+                    </p>
+                    <a href="/SpaCentar/PrikazSpaCentra" class="btn-get-started animate__animated animate__fadeInUp">Pogledaj ponudu</a>
+                </div>
+            </div>
+
+
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+            </a>
+
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+            </a>
+
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Services Section ======= -->
+        <section class="services">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up">
+                        <div class="icon-box icon-box-pink">
+                            <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                            <h4 class="title"><a href="/SportskaAktivnost/PrikazSportskaAktivnost">Sportske aktivnosti</a></h4>
+                            <p class="description">U sklopu Resort-a nalaze se različiti sportski tereni, kao i teretane, a omogućili smo Vam i različite slobodne aktivnosti, kako bi Vaš boravak bio obogaćen novim zabavnim iskustvima. </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon-box icon-box-cyan">
+                            <div class="icon"><i class="bx bxs-slideshow"></i></div>
+                            <h4 class="title"><a href="/Sala/PrikazSala">Sale</a></h4>
+                            <p class="description">Rezervišite jednu od naših sala, koje su višenamjenske, te opremljene su sa savremenom konferencijskom tehnologijom. </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-box icon-box-green">
+                            <div class="icon"><i class="bx bxs-drink"></i></div>
+                            <h4 class="title"><a href="/MeniRestoran/PrikazMeniRestoran">Meni - restoran</a></h4>
+                            <p class="description">Uživajte u našim restoranima koji nude nezaboravno kulinarsko putovanje i emotivno iskustvo u jedinstveno dizajniranom prostoru, sa spektakularnim panoramskim pogledom i različitim specijalitetima napravljenim od svježih, cjelovitih i lokalno uzgojenih namirnica.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon-box icon-box-blue">
+                            <div class="icon"><i class="bx bx-water"></i></div>
+                            <h4 class="title"><a href="/Bazen/PrikazBazena">Bazeni</a></h4>
+                            <p class="description">Plivanje i opuštanje u našim bazenima sa pogledom na veličanstveni pejzaž i izvorskom vodom su idealni za relaksaciju i pronalazak unutarnjeg mira, ali i pozitivan stimulans za vaše fizičko zdravlje.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+        <!-- ======= Why Us Section ======= -->
+        <section class="why-us section-bg" data-aos="fade-up" date-aos-delay="200">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-6 video-box">
+                        <img src="~/Slike/pocetna.jpg" class="img-fluid" alt="">
+                        <a href="https://www.youtube.com/watch?v=c41_fkUAcks" class="venobox play-btn mb-4" data-vbtype="video" data-autoplay="true"></a>
+                    </div>
+                    
+                    <div class="col-lg-6 d-flex flex-column justify-content-center p-5">
+
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-video"></i></div>
+                            <h4 class="title"><a href="https://www.youtube.com/watch?v=yUCc9euiPn4">Video</a></h4>
+                            <p class="description">
+                                Kako bi Vam najbolje približili naš Resort, možete pogledati naš promo video, te steći pravi utisak o tome šta možete očekivati kada odlučite posjetiti naše luksuzno odmaralište.
+                                Naša specijalnost je da ovo lično iskustvo uhvatimo kroz profesionalne, visokokvalitetne vizuelne efekte koji privlače više čula. 
+                            </p>
+                        </div>
+
+                        <div class="icon-box">
+                            <div class="icon"><i class="bx bx-gift"></i></div>
+                            <h4 class="title"><a href=""></a></h4>
+                            <p class="description">
+                                Iznenadite Vašu voljenu osobu ili Vašu cijelu porodicu sa odmorom u našem Resortu.
+                                Provedite ugodan i romantičan odmor i opustite se uz izvrsnu kuhinju, na bazenu ili u Wellness i Spa centru!
+                                Romantični trenuci čekaju Vas i Vašu voljenu osobu!
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ======= End Why Us Section ======= -->
+
+        <!-- ======= Features Section ======= -->
+        <section class="features">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>O nama</h2>
+                </div>
+
+                <div class="row" data-aos="fade-up">
+                    <div class="col-md-5">
+                        <img src="assets/img/features-1.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-7 pt-4">
+                        <h3>Informacije o Resortu</h3>
+                        <p class="fst-italic">
+                            Iskusite Resort Moderna, Vaš drugi dom iz snova gdje se francuska umjetnost gostoprimstva i briga o vašoj dobrobiti spajaju i pružaju užitak svim vašim čulima.  Osjetite moć prirode, koja će Vam zajedno sa našim stručnim timom spremnim da primjeti i odgovori na sve Vaše potrebe, omogućiti potpunu obnovu organizma.
+                        </p>
+                        <ul>
+                            <li><i class="bi bi-check"></i> Smješten na idealnoj lokaciji, u što se i sami možete uvjeriti.</li>
+                            <li><i class="bi bi-check"></i> Objekat raspolaže vanjskim i unutrašnjim prostorom pogodnim za posao ili odmor, konferencije ili bankete, kao i vrhunskom tehnologijom, prelijepim restoranom s panoramskim pogledom, ekskluzivnom spa i wellness oazom, bazenom, fitnesom i različitim sportskim aktivnostima.</li>
+                            <li><i class="bi bi-check"></i>Resort nudi harmonični spoj tradicionalnih elemenata i pogodnosti moderne tehnologije.  Njegove zaobljene višeslojne arhitektonske forme upotpunjene zemljanim tonovima i elegantnim namještajem, gostima obećavaju nezaboravno iskustvo holističkog pristupa ugodi.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row" data-aos="fade-up" style="padding-left:40px;">
+                    <div class="col-md-5 order-1 order-md-2">
+                        <img src="assets/img/features-2.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-7 pt-5 order-2 order-md-1">
+                        <h3>Održivost</h3>
+                        <p class="fst-italic">
+                            Par informacija o našem razvoju i rastu.
+                        </p>
+                        <p>
+                            U razvoju Resorta, koncept održivosti igrao je ključnu ulogu od samog početka.  Okosnica je cjelokupnog procesa planiranja kroz intenzivnu saradnju sa vlastima i organizacijama koje se bave očuvanjem prirodnog i kulturnog nasljeđa i turizmom.  Širenje odmarališta i saradnja sa lokalnim i regionalnim poslovnim subjektima otvaraju nova radna mjesta i promoviraju održivo kreiranje vrijednosti u zajednici. Kad god je to bilo moguće, ugovori su sklopljeni sa poslovnim subjektima u regiji, i u fazi izgradnje i u fazi rada, čime je podržana ekonomska održivost.
+                            Pažljivo upravljanje resursima se kroz Projekat Resort-a provlači kao zlatna nit.  Svi apartmani, bungalovi i popratne zgrade pravljene su tako da je ekološka prihvatljivost na najvišem mogućem nivou, sistem energetski efikasnih pumpi za grijanje i hlađenje daje „prirodni osjećaj“ ugodnog ambijenta.  Grijna pumpa je sprava koja pruža toplotnu energiju od izvora do destinacije koja se zove „toplotni bazen“.  
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row" data-aos="fade-up">
+                    <div class="col-md-5">
+                        <img src="assets/img/features-3.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-7 pt-5">
+                        <h3>Društvene mreže</h3>
+                        <p>O nama i samim uslugama koje su u ponudi Resorta možete pogledati i na našim društvenim mrežama, gdje svakodnevno objavljujemo slike i videe Resorta, kao i isti sdržaj naših klijenata.</p>
+                        <ul>
+                            <li><i class="bi bi-check"></i> Instagram </li>
+                            <li><i class="bi bi-check"></i> Facebook </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row" data-aos="fade-up" style="padding-left:40px;">
+                    <div class="col-md-5 order-1 order-md-2">
+                        <img src="assets/img/features-4.svg" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-md-7 pt-5 order-2 order-md-1">
+                        <h3>Naše ponude</h3>
+                        <p class="fst-italic">
+                        </p>
+                        <p>
+                            Naš cijeli tim, svakodnevno, trudi se da u ponudi uvijek imamo sve najbolje i najatraktivnije ponude. Svake sedmice naši uposlenici vrše analize za dodavanje ponuda u asortiman, kako bi Vam osigurali ugodan i nezaboravan odmor u Resort-u.
+                            Zato, ostavite svakodnevicu za sobom i odvažite se na bezbrižno putovanje beskonačnog opuštanja i uživanja. Radujemo se vašoj posjeti!
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ======= End Features Section ======= -->
+
+    </main><!-- End #main -->
+    <!-- ======= Footer ======= -->
+    <div class="footer" style="background-color:azure; max-width:100%;">
+        <div class="text-center">
+            <strong style="font-size:25px;">RESORT - Resort Moderna</strong> 
+        </div>
+        <div class="text-center">
+            &copy; 2022
+        </div>
+    </div>
+    <!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

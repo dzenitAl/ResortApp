@@ -1,0 +1,129 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+}
+@using SeminarskiRS1.ViewModels;
+@model RezervacijaPrikazVM
+
+
+<style>
+    label {
+        font-size: large;
+    }
+
+    input {
+        font-size: large;
+        border: none;
+    }
+</style>
+<main id="main">
+
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="padding-left:50px;">Rezervacija</h2>
+                <ol style="padding-right:40px; font-size:14px">
+                    <li><a href="/Home/Index">Home</a></li>
+                    <li>Rezervacija</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row justify-content-center align-self-center">
+
+                <form enctype="multipart/form-data" asp-controller="@Model.Controller" asp-action="SnimiRezervaciju" class="row">
+                    <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                        <div class="portfolio-info">
+                            <div class="portfolio-details-slider swiper">
+                                <div class="swiper-wrapper align-items-center">
+                                    <div class="swiper-slide">
+                                        @foreach (var x in Model.stavke)
+                                        {
+                                            <img src="~/Slike/@x.PutanjaDoSlike" asp-append-version="true" style="height:inherit" />
+                                            <span asp-validation-for="@x.PutanjaDoSlike" class="text-danger"></span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5 align-self-center">
+                        <div class="portfolio-info">
+                            <h3>Podaci o rezervaciji</h3>
+                            <div class="portfolio-info">
+                                @foreach (var x in Model.stavke)
+                                {
+                                    <div class="form-group">
+                                        <input asp-for="@Model.ID" value="@Model.ID" hidden />
+                                    </div>
+                                    <div>
+                                        <label>Naziv: </label>
+                                        <input type="text" asp-for="@x.Naziv" readonly>
+                                    </div>
+                                    <div>
+                                        @if (x.Tip != null)
+                                        {
+                                            <label>Tip: </label>
+                                            <input type="text" asp-for="@x.Tip" readonly>
+                                        }
+                                    </div>
+                                    <div class="form-group input-group row input-group-lg">
+                                        <label>Opis: </label>
+                                        <textarea asp-for="@x.Opis" readonly rows="8" style="height:auto; font-size:16px; border:none;"></textarea>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <label>Termin rezervacije: </label>
+                                        <div class="form-group input-group date row input-group-lg">
+                                            <input type="datetime-local" value="DD/MM/YYY HH:mm" placeholder="DD/MM/YYY HH:mm" asp-for="@Model.dtmDate" class="form-control form-control-lg" style="font-size:large;">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg ">
+                                        <label>Cijena: </label>
+                                        <input asp-for="@Model.CijenaNarudzbe" id="cijena" class="form-control form-control-lg" style="font-size:large;" readonly />
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <label>Kolicina: </label>
+                                        <input type="number" asp-for="@Model.Kolicina" id="kolicina" oninput="funkcija()" min="1" max="12" class="form-control form-control-lg" style="font-size:large;">
+                                    </div>
+
+                                    <div style="font-size:large; font-weight:bold;">Ukupna cijena : <span style="font-size:x-large; font-weight:bold;" id="ukupnaCijena"> KM </span></div>
+                                    <br />
+
+                                    <div class="row col-lg-12 justify-content-center">
+                                        <input type="submit" value="Pošalji rezervaciju" class="btn btn-success btn-lg btn-block" />
+                                        <br />
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+
+<script>
+    function funkcija() {
+        var kolicina = document.getElementById('kolicina').value
+        var cijena = document.getElementById('cijena').value
+        var ukupnaCijena = kolicina * cijena;
+
+        document.getElementById('ukupnaCijena').innerHTML = ukupnaCijena
+    }
+</script>
+

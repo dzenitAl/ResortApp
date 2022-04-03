@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeminarskiRS1", "SeminarskiRS1\SeminarskiRS1.csproj", "{5440874D-B62D-4380-A98A-61BF3C7B5835}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{0ECA1D39-B194-489F-A9F2-62274FC6720C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5440874D-B62D-4380-A98A-61BF3C7B5835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5440874D-B62D-4380-A98A-61BF3C7B5835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5440874D-B62D-4380-A98A-61BF3C7B5835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5440874D-B62D-4380-A98A-61BF3C7B5835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ECA1D39-B194-489F-A9F2-62274FC6720C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ECA1D39-B194-489F-A9F2-62274FC6720C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ECA1D39-B194-489F-A9F2-62274FC6720C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ECA1D39-B194-489F-A9F2-62274FC6720C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {82B10D1F-3DC0-4013-8C5C-9620192F84E7}
+	EndGlobalSection
+EndGlobal

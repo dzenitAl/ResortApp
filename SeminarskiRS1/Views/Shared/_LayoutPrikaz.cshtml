@@ -1,0 +1,183 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using Data.EFModels;
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<Korisnik> UserManager
+@{
+    var logged = User.Identity.Name;
+    var ko = UserManager.Users.Where(u => u.Email == User.Identity.Name);
+    var rola = UserManager.Users.Where(u => u.Email == User.Identity.Name).Select(x => x.RolaID).FirstOrDefault();
+}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Resort App</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="~/assets/img/favicon.png" rel="icon">
+    <link href="~/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Moderna - v4.8.0
+    * Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center ">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <div class="logo">
+                <h1 class="text-light"><a href="index.html"><span>Resort</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="active " href="/">Početna</a></li>
+                    <li><a href="/Sala/PrikazSala">Sale</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Smještaj</span><i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/Soba/PrikazSoba">Sobe</a></li>
+                            <li><a href="/Bungalov/PrikazBungalova">Bungalov</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/MeniRestoran/PrikazMeniRestoran">Restoran</a></li>
+                    <li class="dropdown">
+                        <a href="#"><span>Aktivnosti</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="/SportskaAktivnost/PrikazSportskaAktivnost">Sportske aktivnosti</a></li>
+                            @if (rola == 2)
+                            {
+                                <li>
+                                    <a asp-controller="Bazen" asp-action="PrikazBazena">
+                                        Bazen
+                                        <span class="noti badge" style=" background-color: #EFC809;">
+                                            <span class="count-noti">@(ko.FirstOrDefault().brojNotifikacija)</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a href="/Bazen/PrikazBazena">Bazen</a></li>
+                            }
+                            <li><a href="/SpaCentar/PrikazSpaCentra">Spa centar</a></li>
+                            <li><a href="/Wellnes/PrikazWellnes">Wellness</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/identity/account/logout">Odjavi se</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+    @*signalr*@
+
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+    <script src="~/lib/signalr/dist/browser/signalr.min.js"></script>
+</body>
+
+</html>
+<script>
+    var myhub = new signalR.HubConnectionBuilder().withUrl("/myhub").build();
+
+    function resetCountKorisnik() {
+        $.ajax({
+            url: '/Bazen/ResetCountKorisnik',
+            type: 'GET',
+            data: { Email: "@logged" },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+    };
+
+    $("span.badge").click(function (e) {
+        e.stopPropagation();
+        var count = 0;
+        count = parseInt($('span.count-noti').html()) || 0;
+        $('span.count', this).html('0');
+        resetCountKorisnik();
+    });
+
+
+    function updateNotificationCount() {
+        var count = 0;
+        count = parseInt($("span.count-noti").html()) || 0;
+        count++;
+        $("span.count-noti").html(count);
+    }
+
+    myhub.start().then(function () {
+        console.info("started signalR hub");
+
+    }).catch(function (err) {
+        return console.error(err.toString());
+    });
+
+    myhub.on("prijemPoruke", function (message) {
+        if (message == "dodanaNovost") {
+            updateNotificationCount();
+        }
+    });
+
+</script>

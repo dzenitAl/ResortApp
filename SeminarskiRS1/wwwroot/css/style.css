@@ -1,0 +1,323 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#LijeviNavBar {
+    height: 600px;
+    width: 21%;
+    float: left;
+    background-color: whitesmoke;
+    /*background-image: url("https://i.pinimg.com/564x/8f/c6/b7/8fc6b7eca6e1d9bba6500efc0cfd8bda.jpg");
+        background-position: center;
+        background-size: cover;
+        opacity: 1.5;*/
+    margin: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#NavMain {
+    height: 80px;
+    width: 90%;
+    background-color: whitesmoke;
+    color: white;
+    font-size: 20px;
+    border-radius: 20px;
+    /*padding: 20px;*/
+    position: relative;
+    top: 20px;
+    left: 32px;
+}
+
+#glavni {
+    width: 73%;
+    height: 800px;
+    /* background-image: url("https://i.pinimg.com/564x/8f/c6/b7/8fc6b7eca6e1d9bba6500efc0cfd8bda.jpg");
+        background-position: center;
+        background-size: cover;
+        opacity: 1.5;*/
+    float: right;
+}
+
+#wrapper {
+    /*background-color: darkblue;*/
+    width: 100%;
+    /*height: 100%;*/
+    height: 1000px;
+    background-image: url("https://i.pinimg.com/564x/8f/c6/b7/8fc6b7eca6e1d9bba6500efc0cfd8bda.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: 1.5;
+}
+
+#slika {
+    width: 100%;
+    height: 50%;
+    border: none;
+}
+
+#opis {
+    background-color: whitesmoke;
+    opacity: 0.7;
+    width: 100%;
+    height: 30%;
+    font-family: Calibri;
+    text-align: center;
+    padding-top: 10px;
+    /*border: 1px solid green;*/
+}
+
+#buttons {
+    background-color: transparent;
+    width: 100%;
+    height: 20%;
+}
+
+#prikazSlike {
+    width: 100%;
+    height: 100%;
+    border-radius: none;
+}
+
+label {
+    font-size: 10px;
+}
+
+#buttonDodaj {
+    width: 200px;
+    height: 45px;
+    background-color: whitesmoke;
+    margin-top: 47px;
+    border-radius: 12px;
+    border: solid 1px transparent;
+    margin-left: 25px;
+}
+
+.IzbornikStavka {
+    width: 96%;
+    padding-top: 15px;
+    height: 45px;
+    text-decoration: none;
+    /*font-family: dino odaberi :) Al da podržava kvačice */
+    float: left;
+    border: 1px solid transparent;
+    border-bottom: 1px solid #a3c2c2;
+    margin: 5px;
+    border-radius: 10px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+    .IzbornikStavka:hover {
+        background-color: #efeff5;
+        color: darkgray;
+        cursor: pointer;
+    }
+
+.zaFont {
+    font-size: 13px;
+    opacity: 1;
+}
+
+.okvir {
+    /*background: rgba(76, 175, 80, 0.3);*/ /* Green background with 30% opacity */
+    /*background-color: purple;*/
+    background-color: transparent;
+    width: 280px;
+    height: 335px;
+    float: left;
+    margin-top: 30px;
+    margin-left: 30px;
+    border: none;
+    /*opacity:0.8;*/
+    /*width: 28%;
+        height: 40%;
+        margin: 5px;*/
+}
+
+img {
+    border: 0;
+    width: 100%;
+    height: 100%;
+    border-style: solid;
+}
+
+.btn {
+    position: relative;
+    margin-left: 70px;
+    margin-top: 25px;
+    background-color: whitesmoke;
+    width: 18%;
+    color: dimgray;
+    font-size: 17px;
+}
+
+.btn2 {
+    position: relative;
+    margin-left: 26px;
+    margin-top: 15px;
+    background-color: whitesmoke;
+    width: 100px;
+    height: 30px;
+    color: dimgray;
+    border-radius: 10px;
+    border: none;
+    opacity: 0.7;
+}
+
+#Error {
+    font-size: 30px;
+    color: crimson;
+    margin-top: 200px;
+    margin-left: 600px;
+    font-weight: bold;
+}
+
+#btn3 {
+    position: relative;
+    margin-left: 26px;
+    margin-top: 15px;
+    background-color: whitesmoke;
+    width: 260px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    opacity: 0.7;
+}
+
+
+
+#KONT_STRANICE {
+    height: 100%;
+    width: 100%;
+    background-image: url("https://i.pinimg.com/564x/8f/c6/b7/8fc6b7eca6e1d9bba6500efc0cfd8bda.jpg");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.9;
+}
+
+#glavnii {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    margin-top: 6px;
+    background-color: white;
+}
+
+#NavMain {
+    background-color: white;
+    height: 60px;
+    width: 100%;
+    color: white;
+}
+
+.input_polje {
+    /*margin-top:px;*/
+    /*border-style: dashed;*/
+    border: 1px solid transparent;
+    margin-left: 65px;
+    padding-top: -2px;
+    width: 500px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid lightblue;
+    color: gray;
+}
+
+.input_poljee {
+    /*margin-top:px;*/
+    /*border-style: dashed;*/
+    border: 1px solid transparent;
+    margin-left: 500px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 500px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid lightblue;
+    color: gray;
+}
+
+.btn {
+    color: dimgrey;
+    background-color: white;
+    margin-top: 25px;
+    margin-left: 20px;
+    font-size: 15px;
+    width: 130px;
+    bottom: 5px;
+    /*background-color: rebeccapurple;*/
+}
+
+    .btn alert-danger {
+        margin-left: 30px;
+    }
+
+#GLAVNI {
+    border-radius: 10px;
+    position: relative;
+    height: 500px;
+    width: 80%;
+    top: 40px;
+    left: 130px;
+}
+
+#Slika {
+    /*background-color:yellow;*/
+    height: 100%;
+    width: 40%;
+    float: left;
+}
+
+#konferencija {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+span {
+    color: lightblue;
+    padding-top: 40px;
+    font-size: 25px;
+    padding-left: 48px;
+    position: relative;
+    top: 15px;
+    bottom: 20px;
+}
+/*  #SpanElement{
+            height:20px;
+            width: 50px;
+            background-color: yellow;
+        }*/
+label {
+    padding-top: 20px;
+    padding-left: 60px;
+    /*margin-left: 40px;*/
+    font-weight: normal;
+    color: dimgrey;
+}
+
+#forma {
+    background-color: white;
+}
+
+#neko {
+    /*margin-top: 5px;
+            margin-left: 10px;
+            border-radius: 2px;
+            border-color: lightblue;
+            border: 1px solid transparent;
+            color: lightgreen;
+            margin-left: 2px;*/
+    border-radius: 2px;
+    border-color: lightblue;
+    border: 1px solid transparent;
+    position: relative;
+    left: 10px;
+    top: 50px;
+    bottom: 20px;
+    color: lightgreen;
+    margin-top: 10px;
+}

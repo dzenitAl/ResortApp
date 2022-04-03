@@ -1,0 +1,169 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using SeminarskiRS1.ViewModels
+@model SportskaAktivnostEvidentirajVM
+
+@{
+    var photoPath = "~/Slike/" + (@Model.PutanjaDoSlike ?? "add-image.png");
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+}
+
+<main id="main">
+
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="padding-left:50px;">Detalji sportske aktivnosti</h2>
+                <ol style="padding-right:40px; font-size:14px;">
+                    <li><a href="/Home/Index">Home</a></li>
+                    <li><a href="/SportskaAktivnost/PrikazSportskaAktivnost">Sportske aktivnosti</a></li>
+                    <li>Detalji sportske aktivnosti</li>
+                </ol>
+            </div>
+
+        </div>
+    </section>
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row justify-content-center align-self-center">
+                @if (Model.RolaID == 1)
+                {
+                    <form enctype="multipart/form-data" class="row" asp-action="Snimi" asp-controller="SportskaAktivnost">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                            <div class="portfolio-info">
+                                <h4>Slike sportske aktivnosti</h4>
+                                <input multiple type="file" asp-for="SportskaAktivnostSlika"  class="form-control form-control-lg" id="formFileMultiple" style="font-size:17px;" />
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        @if (Model.PutanjaDoSlikaSportskeAktivnosti != null)
+                                        {
+                                            @foreach (var x in Model.PutanjaDoSlikaSportskeAktivnosti)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="~/Slike/@x" asp-append-version="true" style="height:inherit" />
+                                                    <span asp-validation-for="SportskaAktivnostSlika" class="text-danger"></span>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="swiper-slide">
+                                                <span asp-validation-for="SportskaAktivnostSlika" class="text-danger"></span>
+                                                <img src="@photoPath" asp-append-version="true" sp-validation-for="SportskaAktivnostSlika" />
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-5 align-self-center">
+                            <div class="portfolio-info">
+                                <h3>Informacije o sportskoj aktivnosti</h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group row">
+                                        <input asp-for="SportskaAktivnostID" value="@Model.SportskaAktivnostID" hidden />
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Naziv sportske aktivnosti</h4>
+                                        <input type="text" asp-for="NazivAktivnosti" class="form-control form-control-lg" required style="font-size:17px;">
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Tip sportske aktivnosti</h4>
+                                        <select asp-for="SportskaAktivnostiTipID" asp-items="@Model.SportskaAktivnostTip" required class="form-select form-select-lg" style="font-size:17px;"></select>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Opis sportske aktivnosti</h4>
+                                        <textarea asp-for="OpisPrograma" required class="form-control form-control-lg" rows="7" style="height:auto; font-size:17px;"></textarea>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Cijena termina</h4>
+                                        <input type="text" asp-for="CijenaAktivnosti" class="form-control form-control-lg" required style="font-size:17px;">
+                                    </div>
+                                </div>
+                                <input type="submit" value="Snimi" class="btn btn-primary btn-lg btn-block" />
+                            </div>
+                        </div>
+
+                    </form>
+                }
+                else
+                {
+                    <form enctype="multipart/form-data" class="row" asp-action="Snimi" asp-controller="SportskaAktivnost">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                            <div class="portfolio-info">
+                                <h4>Slike sportske aktivnosti</h4>
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        @foreach (var x in Model.PutanjaDoSlikaSportskeAktivnosti)
+                                        {
+                                            <div class="swiper-slide">
+                                                <img src="~/Slike/@x" asp-append-version="true" style="height:inherit" />
+                                                <span asp-validation-for="SportskaAktivnostSlika" class="text-danger"></span>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-5 align-self-center">
+                            <div class="portfolio-info">
+                                <h3>Informacije o sportskoj aktivnosti</h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group row">
+                                        <input asp-for="SportskaAktivnostID" value="@Model.SportskaAktivnostID" hidden />
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Naziv sportske aktivnosti</h4>
+                                        <input type="text" asp-for="NazivAktivnosti" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h4>Tip sportske aktivnosti</h4>
+                                        <input type="text" asp-for="SportskaAktivnostiTipID" asp-items="@Model.SportskaAktivnostTip2" readonly class="form-control form-control-lg" style="font-size:17px;" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <h4>Opis sportske aktivnosti</h4>
+                                        <textarea asp-for="OpisPrograma" readonly class="form-control form-control-lg" rows="7" style="height:auto; font-size:17px;"></textarea>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Cijena termina</h4>
+                                        <input type="text" asp-for="CijenaAktivnosti" class="form-control form-control-lg" readonly style="font-size:17px;">
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-success btn-lg col-3" onclick="window.location = '/SportskaAktivnost/Rezervacija?SportskaAktivnostID=@Model.SportskaAktivnostID'">Napravi rezervaciju</button>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+
+        </div>
+    </section>
+
+</main>

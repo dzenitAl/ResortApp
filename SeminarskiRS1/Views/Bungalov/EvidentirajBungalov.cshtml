@@ -1,0 +1,176 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+
+    var photoPath = "~/Slike/" + (@Model.PutanjaDoSlike ?? "add-image.png");
+}
+@using SeminarskiRS1.ViewModels
+@model BungalovEvidentirajVM
+
+
+<main id="main">
+
+    <!-- ======= Our Portfolio Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 style="padding-left:25px;">Dodaj novi bungalov </h2>
+                <ol style="padding-right:40px; font-size:14px">
+                    <li><a href="/Home/Index">Home</a></li>
+                    <li><a href="/Bungalov/PrikazBungalova">Bungalov</a></li>
+                    <li>Dodaj novi bungalov </li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Our Portfolio Section -->
+
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+
+            <div class="row gy-4">
+
+                @if (Model.RolaID == 1)
+                {
+                    <form enctype="multipart/form-data" asp-action="Snimi" asp-controller="Bungalov">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                            <div class="portfolio-info">
+                                <h4>Slike bungalova</h4>
+                                <input multiple type="file" asp-for="BungalovSlike" required class="form-control form-control-lg" id="formFileMultiple" style="font-size:17px;" />
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        @if (Model.PutanjaDoSlikaBungalova != null)
+                                        {
+                                            @foreach (var x in Model.PutanjaDoSlikaBungalova)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="~/Slike/@x" asp-append-version="true" style="height:inherit" />
+                                                    <span asp-validation-for="BungalovSlike" class="text-danger"></span>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="swiper-slide">
+                                                <span asp-validation-for="BungalovSlike" class="text-danger"></span>
+                                                <img src="@photoPath" asp-append-version="true" sp-validation-for="BungalovSlike" />
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="portfolio-info">
+                                <h3>Detalji o novom bungalovu </h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group row">
+                                        <input asp-for="BungalovId" value="@Model.BungalovId" hidden />
+                                    </div>
+
+                                    <div class="form-group row input-group input-group-lg">
+                                        <h4>Naziv bungalova</h4>
+                                        <input type="text" asp-for="NazivBungalova" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" required>
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Tip bungalova</h4>
+                                        <select asp-for="BungalovTipID" asp-items="@Model.BungalovTipovi" required class="form-select-lg mb-4">
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group row input-group input-group-lg">
+                                        <h4>Cijena bungalova</h4>
+                                        <input type="text" asp-for="Cijena" class="form-control" aria-describedby="inputGroup-sizing-lg" required>
+                                    </div>
+
+                                    <div class="form-group row input-group input-group-lg">
+                                        <h4>Opis bungalova</h4>
+                                        <textarea asp-for="OpisBungalova" required class="form-control" aria-label-="With textarea" style="height:100px"></textarea>
+                                    </div>
+                                </div>
+                                <input type="submit" value="Snimi" class="btn btn-primary btn-lg btn-block" />
+                            </div>
+                        </div>
+                    </form>
+                }
+                else
+                {
+                    <form enctype="multipart/form-data" asp-controller="Bungalov" class="row">
+
+                        <div class="col-md-7 align-self-center" style="padding-right:0px;">
+                            <div class="portfolio-info">
+                                <h4>Slike bungalova</h4>
+                                <div class="portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        @if (Model.PutanjaDoSlikaBungalova != null)
+                                        {
+                                            @foreach (var x in Model.PutanjaDoSlikaBungalova)
+                                            {
+                                                <div class="swiper-slide">
+                                                    <img src="~/Slike/@x" asp-append-version="true" style="height:inherit" />
+                                                    <span asp-validation-for="BungalovSlike" class="text-danger"></span>
+                                                </div>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <div class="swiper-slide">
+                                                <span asp-validation-for="BungalovSlike" class="text-danger"></span>
+                                                <img src="~/Slike/pocetna.jpg" class="img-fluid" asp-append-version="true" sp-validation-for="BungalovSlike" />
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 align-self-center">
+                            <div class="portfolio-info">
+                                <h3>Informacije o bungalovu </h3>
+                                <div class="portfolio-info">
+
+                                    <div class="form-group">
+                                        <input asp-for="BungalovId" value="@Model.BungalovId" hidden />
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Naziv bungalova </h4>
+                                        <input type="text" asp-for="NazivBungalova" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" readonly style="font-size:17px;">
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Tip bungalova</h4>
+                                        <input type="text" asp-for="BungalovTipID" value="@Model.BungalovTip2" class="form-control form-control-lg" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" readonly style="font-size:17px;">
+                                    </div>
+
+                                    <div class="form-group input-group row input-group-lg">
+                                        <h4>Opis bungalova </h4>
+                                        <textarea asp-for="OpisBungalova" readonly class="form-control form-control-lg" aria-label="With textarea" rows="10" style="height:auto; font-size:16px;"></textarea>
+                                    </div>
+
+                                    <div class="form-group row input-group input-group-lg">
+                                        <h4>Cijena bungalova</h4>
+                                        <input type="text" asp-for="Cijena" class="form-control" aria-describedby="inputGroup-sizing-lg" readonly style="font-size:17px;">
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-success btn-lg col-3" onclick="window.location = '/Bungalov/Rezervacija?BungalovId=@Model.BungalovId'">Napravi rezervaciju</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                }
+            </div>
+        </div>
+    </section><!-- End Portfolio Details Section -->
+</main>

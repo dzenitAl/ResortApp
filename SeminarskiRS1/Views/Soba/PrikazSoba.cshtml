@@ -1,0 +1,100 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using SeminarskiRS1.ViewModels;
+@model SobaPrikazVM
+
+@{
+    Layout = "~/Views/Shared/_LayoutPrikaz.cshtml";
+}
+
+<main id="main">
+
+        <section class="breadcrumbs">
+            <div class="container">
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 style="padding-left:50px;">Sobe</h2>
+                    <ol style="padding-right:40px; font-size:14px">
+                        <li><a href="/Home/Index">Početna</a></li>
+                        <li>Sobe</li>
+                    </ol>
+                </div>
+
+            </div>
+        </section>
+        <section class="portfolio">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="portfolio-flters">
+                            <ul id="portfolio-flters">
+                                <li data-filter="*" class="filter-active">Sve</li>
+                                @foreach (var x in Model.SobaTipovi)
+                                {
+                                    <li data-filter=".@x.Value">@x.Text</li>
+                                }
+                            </ul>
+                        </div>
+                        @if (Model.RolaID == 1)
+                        {
+                            <div class="row col-lg-12 justify-content-center">
+                                <button type="button" class="btn btn-primary col-lg-10 btn-lg text-lg-center" onclick="window.location='/Soba/EvidentirajSobu?SobaId=0'" style="margin-bottom:20px">Dodaj novu sobu</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="row portfolio-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500" style="margin-left:30px; margin-right:30px;">
+
+                @foreach (var x in Model.sobe)
+                {
+                    <div class="col-lg-4 col-md-6 portfolio-wrap @x.SobaTipID.ToString()">
+                        <div class="portfolio-item">
+
+                            @if (x.PutanjaDoSlike != null)
+                            {
+                                <img src="~/Slike/@x.PutanjaDoSlike" class="img-fluid" alt="@x.NazivSobe" style="height:400px; width:560px;">
+                            }
+                            else
+                            {
+                                <img src="~/Slike/pocetna.jpg" class="img-fluid" alt="@x.NazivSobe" style="height:400px; width:560px;">
+                            }
+                            <div class="portfolio-info">
+                                <h3>@x.NazivSobe</h3>
+                                <input hidden @x.SobaId />
+                                @if (Model.RolaID == 1)
+                                {
+                                    <div>
+                                        <a href="~/Slike/@x.PutanjaDoSlike" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@x.OpisSobe"><i class="bx bx-plus"></i></a>
+                                        <button type="button" class="btn btn-danger col-3 btn-lg" onclick="window.location = '/Soba/ObrisiSobu?SobaId=@x.SobaId'">Obriši</button>
+                                    </div>
+
+                                    <div>
+                                        <a href="/Soba/EvidentirajSobu?SobaId=@x.SobaId" title="Detalji sobe"><i class="bx bx-link"></i></a>
+                                        <button type="button" class="btn btn-primary col-3 btn-lg" onclick="window.location = '/Soba/EvidentirajSobu?SobaId=@x.SobaId'">Uredi</button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        <a href="~/Slike/@x.PutanjaDoSlike" data-gallery="portfolioGallery" class="portfolio-lightbox" title="@x.OpisSobe"><i class="bx bx-plus"></i></a>
+                                    </div>
+
+                                    <div>
+                                        <a href="/Soba/EvidentirajSobu?SobaId=@x.SobaId" title="Detalji sobe"><i class="bx bx-link"></i></a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </section>
+
+    </main>
+
+
